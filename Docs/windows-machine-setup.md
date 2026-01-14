@@ -59,3 +59,12 @@ stage('Build Win64') {
 
 - `RunUAT not found`：检查 `EngineRoot` 是否指向 UE 根目录（应包含 `Engine/Build/BatchFiles/RunUAT.bat`）。
 - UBA 不生效：确认 `Build/Tools/setup_env_windows.bat` 已运行过，并检查 `%APPDATA%\\Unreal Engine\\UnrealBuildTool\\BuildConfiguration.xml` 是否包含 Coordinator。
+
+## iOS 远端（可选）
+
+如果你要在 Windows 发起 iOS 构建（远端 Mac 负责链接/签名），通常还需要：
+
+- Windows → Mac 的 SSH 免密登录（`Platforms.IOS.SshKeyPath` 记录密钥路径）
+- `rsync`（用于增量同步；不同 UE 版本/工具链实现不同）
+
+SDK 默认不会“猜测”并自动拼 iOS Remote 参数；请在 `Platforms.IOS.ExtraUATArgs` 或 `UAT.ExtraArgs` 中按你们的 UE 版本加入真实可用的参数。

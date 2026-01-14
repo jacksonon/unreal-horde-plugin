@@ -22,9 +22,9 @@
 为不同平台提供额外配置；SDK 默认只做“记录 + 基础透传”，真实平台差异建议通过 `ExtraUATArgs` 完成。
 
 - `Platforms.<Platform>.ExtraUATArgs`：数组，追加到 UAT 命令行
+- `Platforms.IOS.RemoteServer` / `RemoteUser` / `SshKeyPath` / `TeamId` / `Provision`：用于团队统一记录 iOS 远端与签名信息；默认不会自动转成 UAT 参数（请用 `ExtraUATArgs` 精确指定你们 UE 版本的参数）
 
 ## `UAT`
 
 - `ExtraArgs`：数组，所有平台都会追加到 UAT 命令行（适合团队统一默认值）
 - `BuildCookRun`：开关组合（Cook/Stage/Package/Archive/Pak）
-
