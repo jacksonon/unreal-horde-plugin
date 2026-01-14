@@ -1,0 +1,16 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0.0",
+  "FriendlyName": "UE Build SDK",
+  "Description": "Editor helpers for UE5 Build SDK (open config / run uebuild).",
+  "Category": "Tools",
+  "Modules": [
+    {
+      "Name": "UEBuildSDK",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
+

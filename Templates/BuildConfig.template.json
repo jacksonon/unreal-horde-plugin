@@ -1,0 +1,38 @@
+{
+  "ProjectName": "MyGame",
+  "EngineVersion": "5.3",
+  "EngineRoot": "C:/UnrealEngine/UE_5.3",
+  "SharedDDC": "\\\\NasServer\\DDC",
+  "ArtifactsDir": "\\\\NasServer\\Builds",
+
+  "Platforms": {
+    "Win64": {},
+    "Android": {
+      "NDKVersion": "r25b",
+      "KeyStorePath": "Secrets/release.keystore"
+    },
+    "IOS": {
+      "RemoteServer": "192.168.1.100",
+      "RemoteUser": "buildbot",
+      "SshKeyPath": "C:/Keys/id_rsa",
+      "TeamId": "A1B2C3D4E5",
+      "Provision": "Match_AppStore_MyGame.mobileprovision"
+    }
+  },
+
+  "UBA": {
+    "Enabled": true,
+    "CoordinatorIP": "192.168.1.50"
+  },
+
+  "UAT": {
+    "ExtraArgs": [],
+    "BuildCookRun": {
+      "Cook": true,
+      "Stage": true,
+      "Package": true,
+      "Archive": true,
+      "Pak": true
+    }
+  }
+}
