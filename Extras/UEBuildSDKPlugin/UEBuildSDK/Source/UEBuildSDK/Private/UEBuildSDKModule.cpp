@@ -1,8 +1,10 @@
 #include "UEBuildSDKModule.h"
 
 #include "HAL/PlatformProcess.h"
+#include "Framework/Commands/UIAction.h"
 #include "Misc/MessageDialog.h"
 #include "Misc/Paths.h"
+#include "Styling/SlateIcon.h"
 #include "ToolMenus.h"
 
 static FString GetProjectBuildRoot()
