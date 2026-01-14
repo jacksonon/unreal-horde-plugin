@@ -15,6 +15,11 @@ def main() -> int:
         default=None,
         help="Path to BuildConfig.json (default: <Project>/Config/BuildSystem/BuildConfig.json)",
     )
+    parser.add_argument(
+        "--json_config",
+        default=None,
+        help="Alias of --config-path (compat with older docs).",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print UAT command without executing")
     parser.add_argument(
         "--extra-uat-arg",
@@ -25,7 +30,8 @@ def main() -> int:
     args = parser.parse_args()
 
     build_root = uebuildlib.get_build_root(Path(__file__))
-    config_path = Path(args.config_path).expanduser().resolve() if args.config_path else uebuildlib.default_config_path(build_root)
+    override = args.config_path or args.json_config
+    config_path = Path(override).expanduser().resolve() if override else uebuildlib.default_config_path(build_root)
 
     cfg = uebuildlib.read_json(config_path)
     result = uebuildlib.validate_config(cfg, config_path=config_path)
@@ -59,4 +65,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -98,10 +98,16 @@ def run(
     env: dict[str, str] | None = None,
     dry_run: bool = False,
 ) -> int:
-    print(format_cmd(cmd))
+    actual_cmd = cmd
+    if _is_windows() and cmd:
+        first = cmd[0].lower()
+        if first.endswith(".bat") or first.endswith(".cmd"):
+            actual_cmd = ["cmd.exe", "/c", *cmd]
+
+    print(format_cmd(actual_cmd))
     if dry_run:
         return 0
-    completed = subprocess.run(cmd, cwd=str(cwd) if cwd else None, env=env)
+    completed = subprocess.run(actual_cmd, cwd=str(cwd) if cwd else None, env=env)
     return int(completed.returncode)
 
 
@@ -220,12 +226,6 @@ def platform_uat_args(cfg: dict[str, Any], platform: str) -> list[str]:
         args.append("-platform=Android")
     elif platform.upper() in {"IOS", "IOSSIMULATOR"}:
         args.append("-platform=IOS")
-        for k in ("RemoteServer", "RemoteUser", "SshKeyPath"):
-            v = platform_cfg.get(k)
-            if isinstance(v, str) and v.strip():
-                # Pass-through, but keep names obvious for log grep.
-                # Teams can move to version-accurate args via UAT.ExtraArgs.
-                args.append(f"-{k.lower()}={v}")
     else:
         args.append(f"-platform={platform}")
 

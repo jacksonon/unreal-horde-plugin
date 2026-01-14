@@ -16,7 +16,8 @@
       "RemoteUser": "buildbot",
       "SshKeyPath": "C:/Keys/id_rsa",
       "TeamId": "A1B2C3D4E5",
-      "Provision": "Match_AppStore_MyGame.mobileprovision"
+      "Provision": "Match_AppStore_MyGame.mobileprovision",
+      "ExtraUATArgs": []
     }
   },
 

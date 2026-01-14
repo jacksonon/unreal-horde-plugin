@@ -26,4 +26,4 @@
 
 ## Windows 侧配置（BuildConfig.json 中的 iOS 字段）
 
-`Platforms.IOS.RemoteServer` / `RemoteUser` / `SshKeyPath` 用于记录远端信息，方便团队统一配置；不同 UE 版本下 UAT/RemoteToolchain 参数可能略有差异，建议通过 `UAT.ExtraArgs`（或 `Platforms.IOS.ExtraUATArgs`）补充真实使用的参数。
+`Platforms.IOS.RemoteServer` / `RemoteUser` / `SshKeyPath` 用于记录远端信息，方便团队统一配置；不同 UE 版本下 UAT/RemoteToolchain 参数可能略有差异，建议通过 `UAT.ExtraArgs`（或 `Platforms.IOS.ExtraUATArgs`）补充真实使用的参数（SDK 默认不会“猜测”并自动拼接 iOS 远端参数）。
